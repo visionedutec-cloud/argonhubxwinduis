@@ -239,6 +239,70 @@ section.content {
     line-height: 1.8;
 }
 
+/* ARGON COPY SECTION */
+
+.copy-section {
+    background: linear-gradient(145deg, #1d1016, #100a0d);
+    border: 1px solid #86213d;
+    border-radius: 12px;
+    padding: 30px;
+    max-width: 650px;
+    margin: 40px auto;
+    box-shadow: 0 0 35px #ff174418;
+}
+
+.copy-section h3 {
+    color: var(--red);
+    letter-spacing: 3px;
+    margin-bottom: 20px;
+}
+
+.copy-section p {
+    color: #a99ba1;
+    font-size: 12px;
+    margin-bottom: 18px;
+}
+
+.copy-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+    background: #090609;
+    border: 1px solid #632237;
+    border-radius: 8px;
+    padding: 15px;
+}
+
+.copy-bar code {
+    color: #ff718e;
+    font-size: 15px;
+}
+
+.copy-btn {
+    background: linear-gradient(120deg, #ff1744, #a80029);
+    border: none;
+    border-radius: 6px;
+    padding: 12px 20px;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    transition: .2s;
+}
+
+.copy-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 0 20px #ff174455;
+}
+
+#copyStatus {
+    display: block;
+    color: #ff1744;
+    font-size: 11px;
+    margin-top: 14px;
+    letter-spacing: 2px;
+}
+
 .about {
     background: #110a0e;
     text-align: center;
@@ -289,6 +353,10 @@ footer {
     .hero h1 {
         font-size: 48px;
     }
+
+    .copy-bar {
+        flex-wrap: wrap;
+    }
 }
 </style>
 </head>
@@ -301,6 +369,7 @@ footer {
     <div>
         <a href="#home">HOME</a>
         <a href="#features">FEATURES</a>
+        <a href="#script-access">COPY</a>
         <a href="#about">ABOUT</a>
     </div>
 </nav>
@@ -397,6 +466,38 @@ footer {
 
 </section>
 
+<!-- NEW COPY SECTION -->
+
+<section class="content" id="script-access">
+
+    <div class="tag">ARGON HUB RESOURCES</div>
+
+    <h2 class="section-title">
+        COPY <span>CENTER.</span>
+    </h2>
+
+    <div class="copy-section">
+
+        <h3>ARGON COPY PANEL</h3>
+
+        <p>Copy the text below with one click.</p>
+
+        <div class="copy-bar">
+
+            <code id="copyText">loadstring(game:HttpGet("https://api.jnkie.com/api/v1/luascripts/public/dcbc389bef673fb2ecd855a5918ed60fb22100712fa6f4fff77c7bf86babfe90/download"))()</code>
+
+            <button class="copy-btn" onclick="copyArgon()">
+                COPY
+            </button>
+
+        </div>
+
+        <span id="copyStatus"></span>
+
+    </div>
+
+</section>
+
 <section class="content about" id="about">
 
     <div class="tag">ABOUT ARGON HUB</div>
@@ -421,6 +522,27 @@ footer {
     <br><br>
     © 2026 ARGON HUB
 </footer>
+
+<script>
+async function copyArgon() {
+
+    const text = document.getElementById("copyText").textContent;
+    const status = document.getElementById("copyStatus");
+
+    try {
+
+        await navigator.clipboard.writeText(text);
+
+        status.textContent = "✓ COPIED SUCCESSFULLY!";
+
+    } catch (error) {
+
+        status.textContent = "COPY FAILED. CHECK BROWSER PERMISSIONS.";
+
+    }
+
+}
+</script>
 
 </body>
 </html>
