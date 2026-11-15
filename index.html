@@ -1,0 +1,426 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Argon Hub X Winds UI</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background: #090609;
+    color: white;
+    font-family: Arial, sans-serif;
+}
+
+:root {
+    --red: #ff1744;
+    --darkred: #8e0025;
+    --panel: #160d12;
+}
+
+nav {
+    height: 75px;
+    padding: 0 7%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: #10090d;
+    border-bottom: 1px solid #421321;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+.logo {
+    font-size: 22px;
+    font-weight: 900;
+    letter-spacing: 2px;
+}
+
+.logo span {
+    color: var(--red);
+}
+
+nav a {
+    color: #c9b8be;
+    text-decoration: none;
+    margin-left: 25px;
+    font-size: 13px;
+}
+
+nav a:hover {
+    color: var(--red);
+}
+
+.hero {
+    min-height: 580px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 70px 10%;
+    gap: 40px;
+    background:
+      radial-gradient(circle at 80% 40%, #6b102a55, transparent 35%);
+}
+
+.tag {
+    color: var(--red);
+    font-size: 11px;
+    font-weight: bold;
+    letter-spacing: 3px;
+}
+
+.hero h1 {
+    font-size: clamp(45px, 6vw, 78px);
+    font-weight: 900;
+    line-height: .98;
+    margin: 25px 0;
+    letter-spacing: -3px;
+}
+
+.hero h1 span {
+    color: var(--red);
+}
+
+.hero p {
+    color: #a99ba1;
+    max-width: 450px;
+    line-height: 1.8;
+    font-size: 14px;
+}
+
+.buttons {
+    margin-top: 30px;
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.btn {
+    padding: 14px 22px;
+    background: linear-gradient(120deg, #ff1744, #a80029);
+    color: white;
+    text-decoration: none;
+    font-size: 12px;
+    font-weight: bold;
+    border-radius: 6px;
+    transition: .25s;
+}
+
+.btn:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 30px #ff174455;
+}
+
+.btn.secondary {
+    background: transparent;
+    border: 1px solid #632237;
+}
+
+.showcase {
+    width: 330px;
+    height: 350px;
+    flex-shrink: 0;
+    background: linear-gradient(145deg, #26101a, #10090d);
+    border: 1px solid #86213d;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 0 70px #ff174422;
+}
+
+.showcase .symbol {
+    width: 140px;
+    height: 140px;
+    border: 2px solid var(--red);
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    font-size: 75px;
+    font-weight: 900;
+    color: var(--red);
+    box-shadow: 0 0 45px #ff174444;
+    margin-bottom: 30px;
+}
+
+.showcase h2 {
+    letter-spacing: 4px;
+}
+
+.showcase h2 span {
+    color: var(--red);
+}
+
+.showcase small {
+    color: #a99ba1;
+    margin-top: 10px;
+    letter-spacing: 2px;
+}
+
+.stats {
+    padding: 30px 8%;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    background: #120a0e;
+    border-top: 1px solid #391522;
+    border-bottom: 1px solid #391522;
+    text-align: center;
+}
+
+.stats h2 {
+    color: var(--red);
+    font-size: 27px;
+}
+
+.stats p {
+    color: #a99ba1;
+    font-size: 10px;
+    letter-spacing: 2px;
+    margin-top: 8px;
+}
+
+section.content {
+    padding: 90px 10%;
+}
+
+.section-title {
+    font-size: 42px;
+    margin: 18px 0 35px;
+}
+
+.section-title span {
+    color: var(--red);
+}
+
+.cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+}
+
+.card {
+    background: linear-gradient(145deg, #1d1016, #100a0d);
+    border: 1px solid #49202d;
+    border-radius: 10px;
+    padding: 27px;
+    transition: .25s;
+}
+
+.card:hover {
+    transform: translateY(-6px);
+    border-color: var(--red);
+}
+
+.card .icon {
+    font-size: 28px;
+    color: var(--red);
+}
+
+.card h3 {
+    margin: 20px 0 12px;
+}
+
+.card p {
+    color: #a99ba1;
+    font-size: 12px;
+    line-height: 1.8;
+}
+
+.about {
+    background: #110a0e;
+    text-align: center;
+    border-top: 1px solid #391522;
+}
+
+.about p {
+    color: #a99ba1;
+    max-width: 650px;
+    margin: auto;
+    line-height: 1.9;
+    font-size: 13px;
+}
+
+footer {
+    padding: 30px;
+    text-align: center;
+    color: #88757e;
+    font-size: 10px;
+    letter-spacing: 2px;
+    border-top: 1px solid #391522;
+}
+
+@media(max-width: 800px) {
+    .hero {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .showcase {
+        width: 100%;
+    }
+
+    .cards {
+        grid-template-columns: 1fr;
+    }
+
+    .stats {
+        grid-template-columns: 1fr;
+        gap: 25px;
+    }
+
+    nav a {
+        margin-left: 8px;
+        font-size: 10px;
+    }
+
+    .hero h1 {
+        font-size: 48px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<nav>
+    <div class="logo">ARGON <span>HUB</span></div>
+
+    <div>
+        <a href="#home">HOME</a>
+        <a href="#features">FEATURES</a>
+        <a href="#about">ABOUT</a>
+    </div>
+</nav>
+
+<main>
+
+<section class="hero" id="home">
+
+    <div>
+        <div class="tag">BLADE BALL EXPERIENCE</div>
+
+        <h1>
+            DOMINATE<br>
+            EVERY <span>BLADE BALL</span><br>
+            MATCH.
+        </h1>
+
+        <p>
+            Welcome to Argon Hub X Winds UI.
+            A premium Blade Ball community website
+            featuring a bold crimson interface,
+            modern panels and a futuristic design.
+        </p>
+
+        <div class="buttons">
+            <a href="#features" class="btn">EXPLORE ARGON ↗</a>
+            <a href="#about" class="btn secondary">ABOUT US</a>
+        </div>
+    </div>
+
+    <div class="showcase">
+        <div class="symbol">A</div>
+        <h2>ARGON <span>HUB</span></h2>
+        <small>X WINDS UI</small>
+    </div>
+
+</section>
+
+<div class="stats">
+    <div>
+        <h2>ARGON</h2>
+        <p>YOUR BLADE BALL HUB</p>
+    </div>
+
+    <div>
+        <h2>RED</h2>
+        <p>CRIMSON DESIGN</p>
+    </div>
+
+    <div>
+        <h2>WINDS</h2>
+        <p>UI INSPIRED</p>
+    </div>
+</div>
+
+<section class="content" id="features">
+
+    <div class="tag">EXPLORE THE HUB</div>
+
+    <h2 class="section-title">
+        BUILT FOR THE <span>ARENA.</span>
+    </h2>
+
+    <div class="cards">
+
+        <div class="card">
+            <div class="icon">⚔</div>
+            <h3>Blade Ball</h3>
+            <p>
+                A dedicated destination for
+                Blade Ball players and community content.
+            </p>
+        </div>
+
+        <div class="card">
+            <div class="icon">◈</div>
+            <h3>Winds Interface</h3>
+            <p>
+                A clean, dark interface with
+                crimson accents and modern panels.
+            </p>
+        </div>
+
+        <div class="card">
+            <div class="icon">✦</div>
+            <h3>Argon Experience</h3>
+            <p>
+                A custom identity for your
+                Blade Ball community and projects.
+            </p>
+        </div>
+
+    </div>
+
+</section>
+
+<section class="content about" id="about">
+
+    <div class="tag">ABOUT ARGON HUB</div>
+
+    <h2 class="section-title">
+        YOUR GAME. <span>YOUR IDENTITY.</span>
+    </h2>
+
+    <p>
+        Argon Hub X Winds UI is a Blade Ball
+        themed website concept. Customize your
+        content, showcase community resources
+        and build your own Argon identity.
+    </p>
+
+</section>
+
+</main>
+
+<footer>
+    ARGON HUB X WINDS UI — BLADE BALL EDITION
+    <br><br>
+    © 2026 ARGON HUB
+</footer>
+
+</body>
+</html>
